@@ -9,25 +9,25 @@
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181": {
     "detail": "",
-    "fails": 8,
+    "fails": 9,
     "since": "2026-10-01 08:54",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805": {
     "detail": "",
-    "fails": 8,
+    "fails": 9,
     "since": "2026-10-01 08:54",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990": {
     "detail": "",
-    "fails": 8,
+    "fails": 9,
     "since": "2026-10-01 08:54",
     "status": 0
   },
   "https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025": {
     "detail": "",
-    "fails": 8,
+    "fails": 9,
     "since": "2026-10-01 08:54",
     "status": 0
   },
@@ -49,7 +49,7 @@
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/": {
     "detail": "butiken anger: går att beställa (restorder)",
-    "fails": 0,
+    "fails": 1,
     "key": "",
     "name": "NetOnNet",
     "since": "2026-10-01 08:54",
@@ -57,7 +57,7 @@
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/": {
     "detail": "butiken anger: slut",
-    "fails": 0,
+    "fails": 1,
     "key": "",
     "name": "NetOnNet (2024-modell)",
     "since": "2026-10-01 08:54",
@@ -65,7 +65,7 @@
   },
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
     "detail": "",
-    "fails": 0,
+    "fails": 1,
     "key": "",
     "name": "Proshop",
     "since": "2026-10-01 08:54",

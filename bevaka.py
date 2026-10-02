@@ -417,7 +417,10 @@ def notify(title: str, message: str, url: str = "", priority: int = 3, tags=None
         )
 
     if not sent:
-        print(f"[NOTIS – ingen kanal konfigurerad]\n  {title}\n  {message}\n  {url}")
+        if topic or (token and chat):
+            print(f"[NOTIS EJ LEVERERAD – kanalen är konfigurerad men sändningen misslyckades]\n  {title}\n  {message}")
+        else:
+            print(f"[NOTIS – ingen kanal konfigurerad: secret NTFY_TOPIC saknas eller är tom]\n  {title}\n  {message}\n  {url}")
 
 
 def _post(url: str, data: bytes, headers: dict, name: str) -> bool:
@@ -425,10 +428,15 @@ def _post(url: str, data: bytes, headers: dict, name: str) -> bool:
         req = urllib.request.Request(url, data=data, headers=headers, method="POST")
         with urllib.request.urlopen(req, timeout=20) as r:
             ok = 200 <= r.status < 300
-    except Exception as e:
-        print(f"  kunde inte skicka via {name}: {e}", file=sys.stderr)
+            reply = r.read(300).decode("utf-8", "replace")
+    except urllib.error.HTTPError as e:
+        why = e.read(300).decode("utf-8", "replace")
+        print(f"  KUNDE INTE SKICKA via {name}: HTTP {e.code} {why}", file=sys.stderr)
         return False
-    print(f"  notis skickad via {name}")
+    except Exception as e:
+        print(f"  KUNDE INTE SKICKA via {name}: {e}", file=sys.stderr)
+        return False
+    print(f"  notis skickad via {name} (svar: HTTP {r.status} {reply[:160]})")
     return ok
 
 
@@ -558,6 +566,8 @@ def run(items: list[dict], state: dict | None, checker=check, notifier=notify, p
 
 def main() -> int:
     if "--test-notis" in sys.argv:
+        t = os.environ.get("NTFY_TOPIC", "")
+        print(f"NTFY_TOPIC: {'satt, ' + str(len(t.strip())) + ' tecken' if t.strip() else 'TOM/SAKNAS'}")
         notify("🔔 Testnotis", "Funkar! Så här kommer PS5 Pro-larmen att se ut.",
                "https://www.prisjakt.nu", priority=5, tags=["bell"])
         return 0

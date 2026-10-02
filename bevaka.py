@@ -117,7 +117,7 @@ BLOCK_MARKERS = (
 
 # Text som måste finnas på sidan för att vi ska lita på att det är rätt
 # produktsida (och inte en felsida/botvägg) innan "slut-texten är borta" larmar.
-PRODUCT_HINT = re.compile(r"(ps5|playstation\s*5)\s*pro", re.I)
+PRODUCT_HINT = re.compile(r"(ps5|playstation\W{0,3}5)\W{0,3}pro", re.I)
 
 # --- Leveransdatum i sidtext ---------------------------------------------------
 _MONTHS = r"(?:jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec)[a-zåäö]*\.?"
@@ -218,6 +218,10 @@ def structured_availability(body: str) -> tuple[int | None, str, str]:
     Returnerar (status eller None, rå availability-text, pris)."""
     found: list[tuple[int, str]] = []
     price = ""
+
+    # JSON-LD: använd BARA själva produkten (inte relaterade/liknande produkter,
+    # tillbehör eller andra konsoler som butiken listar på samma sida).
+    products = []
     for m in re.finditer(
         r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', body
     ):
@@ -226,6 +230,14 @@ def structured_availability(body: str) -> tuple[int | None, str, str]:
         except Exception:
             continue
         for node in _walk(data):
+            t = node.get("@type")
+            types = t if isinstance(t, list) else [t]
+            if "Product" in types or "ProductGroup" in types:
+                products.append(node)
+    named = [p for p in products if PRODUCT_HINT.search(str(p.get("name", "")))]
+    chosen = named[0] if named else (products[0] if len(products) == 1 else None)
+    if chosen is not None:
+        for node in _walk(chosen.get("offers")):
             av = node.get("availability")
             if isinstance(av, str):
                 key = av.rstrip("/").rsplit("/", 1)[-1].strip().lower()
@@ -233,13 +245,16 @@ def structured_availability(body: str) -> tuple[int | None, str, str]:
                     found.append((AVAILABILITY[key], key))
                     if not price and node.get("price") not in (None, ""):
                         price = _fmt_price(node.get("price"), node.get("priceCurrency"))
-    # microdata: itemprop="availability" href|content="https://schema.org/InStock"
-    for m in re.finditer(
-        r'itemprop=["\']availability["\'][^>]*?(?:href|content)=["\']([^"\']+)', body, re.I
-    ):
-        key = m.group(1).rstrip("/").rsplit("/", 1)[-1].strip().lower()
-        if key in AVAILABILITY:
-            found.append((AVAILABILITY[key], key))
+
+    # microdata (bara om JSON-LD inte gav något; bara första träffen = huvudprodukten)
+    if not found:
+        m = re.search(
+            r'itemprop=["\']availability["\'][^>]*?(?:href|content)=["\']([^"\']+)', body, re.I
+        )
+        if m:
+            key = m.group(1).rstrip("/").rsplit("/", 1)[-1].strip().lower()
+            if key in AVAILABILITY:
+                found.append((AVAILABILITY[key], key))
     # Open Graph: <meta property="product:availability" content="in stock">
     for m in re.finditer(
         r'property=["\'](?:product|og):availability["\'][^>]*content=["\']([^"\']+)', body, re.I

@@ -4,7 +4,7 @@ Uppdateras automatiskt när något ändras.
 
 | | Butik | Status | Detaljer | Sedan |
 |---|---|---|---|---|
-| ⚪ | [Webhallen](https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025) | SLUT | 12 st inkommande (ej bekräftat) · 12 990 kr | 2026-10-02 09:48 |
+| ⚪ | [Webhallen](https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025) | SLUT | 9 st inkommande (ej bekräftat) · 12 990 kr | 2026-10-02 09:48 |
 | ⚪ | [Inet](https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025) | SLUT ⚠️ kan inte läsas |  | 2026-10-02 09:48 |
 | ⚪ | [Elgiganten](https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805) | SLUT ⚠️ kan inte läsas |  | 2026-10-02 09:48 |
 | 🟡 | [NetOnNet](https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/) | FÖRBOKA | butiken anger: går att beställa (restorder) | 2026-10-02 09:48 |

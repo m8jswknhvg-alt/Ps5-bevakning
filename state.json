@@ -56,12 +56,12 @@
     "status": 2
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/": {
-    "detail": "butiken anger: går att beställa (restorder)",
+    "detail": "datan säger \"går att beställa (restorder)\" men sidan visar \"Ej i lager\" – räknas som slut",
     "fails": 0,
     "key": "",
     "name": "NetOnNet",
-    "since": "2026-10-05 11:18",
-    "status": 3
+    "since": "2026-10-05 12:09",
+    "status": 0
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/": {
     "detail": "butiken anger: slut",

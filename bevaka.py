@@ -53,6 +53,9 @@ STATUS_FILE = os.path.join(HERE, "STATUS.md")
 # Antal misslyckade kontroller i rad innan du får en (enda) varning om att en
 # butik inte går att läsa. Med körning var 10:e minut ≈ 1 timme.
 FAIL_WARN_AFTER = 6
+# Efter så många misslyckanden slutar vi slå mot sidan var 10:e minut och provar
+# bara igen med detta intervall (snällare mot butiken som blockerar, mindre brus).
+RETRY_HOURS = 6
 
 # --- Status --------------------------------------------------------------------
 OUT, CHANGED, INCOMING, ORDERABLE, IN_STOCK = 0, 1, 2, 3, 4
@@ -284,10 +287,45 @@ def find_delivery(text: str, raw: str) -> tuple[str, str]:
         snippet = text[m.start() : m.end()].strip()
         snippet = snippet[:1].upper() + snippet[1:]
         return _mark_past(m.group(1), snippet), m.group(1).lower()
-    m = JSON_DATE_RE.search(raw)
-    if m:
-        return _mark_past(m.group(1), f"leveransdatum {m.group(1)}"), m.group(1)
+    # Datum i inbäddad JSON används bara om sidan har ETT enda datum – annars kan
+    # det höra till andra produkter (varianter, tillbehör, liknande).
+    dates = set(JSON_DATE_RE.findall(raw))
+    if len(dates) == 1:
+        d = dates.pop()
+        return _mark_past(d, f"leveransdatum {d}"), d
     return "", ""
+
+
+# Rubriker där sidan börjar visa ANDRA produkter (varianter, tillbehör, liknande).
+RELATED_RE = re.compile(
+    r"\b(versioner|tillbehör|liknande\s+(?:produkter|varor)|relaterade\s+produkter|rekommenderade"
+    r"|kunder\s+som\s+köpt|andra\s+kunder|fler\s+produkter|du\s+kanske\s+också|senast\s+visade"
+    r"|produkter\s+i\s+samma)\b",
+    re.I,
+)
+# Vanliga "slut"-formuleringar. Används bara för att avfärda ett "i lager" från
+# butikens maskinläsbara data när själva produktsidan uppenbart säger att varan är slut.
+OUT_PHRASES = re.compile(
+    r"(slut\s+i\s+lager|ej\s+i\s+lager|inte\s+i\s+lager|finns\s+inte\s+i\s+lager|slutsåld\w*"
+    r"|tillfälligt\s+(?:slut|ej)|not\s+in\s+stock|out\s+of\s+stock|sold\s+out)",
+    re.I,
+)
+
+
+BUY_WORDS = re.compile(r"(lägg\s+i\s+(?:varu|kund)korg|köp\s+nu|förboka|beställ\b|add\s+to\s+cart|\bköp\b)", re.I)
+
+
+def main_text(body: str) -> str:
+    """Sidtexten för HUVUDPRODUKTEN: börjar vid rubriken (h1) med PS5 Pro och
+    slutar där varianter/tillbehör/liknande produkter börjar."""
+    start = 0
+    for m in re.finditer(r"(?is)<h1\b[^>]*>(.*?)</h1>", body):
+        if PRODUCT_HINT.search(visible_text(m.group(1))):
+            start = m.start()
+            break
+    text = visible_text(body[start:])
+    cut = RELATED_RE.search(text, 20)  # ignorera flikar direkt vid rubriken
+    return text[: cut.start()] if cut else text
 
 
 def _mark_past(datestr: str, snippet: str) -> str:
@@ -307,15 +345,43 @@ def check_generic(url: str, watch: str) -> dict:
         return {"ok": False, "error": why}
 
     text = visible_text(body)
+    main = main_text(body)
     st, raw_av, price = structured_availability(body)
-    delivery, key = find_delivery(text, body)
     is_product_page = bool(PRODUCT_HINT.search(text) or PRODUCT_HINT.search(body[:200000]))
-    watch_gone = bool(watch) and is_product_page and watch.lower() not in text.lower()
+    watch_present = bool(watch) and watch.lower() in text.lower()
+    watch_gone = bool(watch) and is_product_page and not watch_present
 
+    # Slut-texten står kvar på sidan = varan är slut. Det gäller oavsett vad
+    # butikens maskinläsbara data eller andra produkter på sidan säger.
+    if watch_present:
+        return {
+            "ok": True,
+            "status": OUT,
+            "detail": " · ".join(["slut-texten finns kvar på sidan"] + ([price] if price else [])),
+            "key": "",
+        }
+
+    delivery, key = find_delivery(main, body)
     status_ = OUT if st is None else st
     detail = []
     if raw_av:
         detail.append(f"butiken anger: {AV_SV.get(raw_av, raw_av)}")
+    # Maskinläsbar data säger "i lager" men sidan själv säger "slut" vid huvudprodukten
+    # (typiskt när datan hör till en variant eller ett tillbehör) → räkna som slut.
+    if status_ == IN_STOCK:
+        m = OUT_PHRASES.search(main[:1500])
+        if m:
+            status_ = OUT
+            detail = [f'datan säger "{AV_SV.get(raw_av, raw_av)}" men sidan visar "{m.group(0)}" – räknas som slut']
+    # "Restorder"/"förbokning" i butikens data är inte detsamma som att man kan beställa.
+    # Det räknas bara om sidan visar något att köpa och inte samtidigt säger slut.
+    if status_ == ORDERABLE:
+        out = OUT_PHRASES.search(main[:1500])
+        no_buy = raw_av == "backorder" and not BUY_WORDS.search(main[:1500])
+        if out or no_buy:
+            status_ = OUT
+            why = f'sidan visar "{out.group(0)}"' if out else "ingen köpknapp på sidan"
+            detail = [f'datan säger "{AV_SV.get(raw_av, raw_av)}" men {why} – räknas som slut']
     if delivery and status_ < INCOMING:
         status_ = INCOMING
     if delivery:
@@ -480,7 +546,9 @@ def write_status(items: list[dict], state: dict, path: str = STATUS_FILE) -> Non
     for it in items:
         s = state.get(it["url"], {})
         st = s.get("status", OUT)
-        flag = " ⚠️ kan inte läsas" if s.get("fails", 0) >= FAIL_WARN_AFTER else ""
+        flag = ""
+        if s.get("fails", 0) >= FAIL_WARN_AFTER:
+            flag = f" ⚠️ kan inte läsas ({s.get('error', '?')}), nytt försök var {RETRY_HOURS}:e timme – bevaka själv"
         rows.append(
             f"| {EMOJI[st]} | [{it['name']}]({it['url']}) | {LABEL[st]}{flag} | "
             f"{(s.get('detail') or '').replace('|', '/')} | {s.get('since', '')} |"
@@ -503,6 +571,11 @@ def run(items: list[dict], state: dict | None, checker=check, notifier=notify, p
             time.sleep(pause)
         url, name = it["url"], it["name"]
         prev = state.get(url)
+        if prev and prev.get("retry_after", 0) > time.time():
+            nxt = datetime.fromtimestamp(prev["retry_after"], TZ).strftime("%d/%m %H:%M")
+            print(f"- {name}: kan inte läsas ({prev.get('error', '?')}), hoppar över till {nxt}")
+            summary.append(f"❔ {name}: kunde inte läsas")
+            continue
         print(f"- {name}: ", end="", flush=True)
         try:
             res = checker(url, it["watch"])
@@ -512,13 +585,16 @@ def run(items: list[dict], state: dict | None, checker=check, notifier=notify, p
         if not res["ok"]:
             s = dict(prev or {"status": OUT, "detail": "", "since": now})
             s["fails"] = s.get("fails", 0) + 1
+            s["error"] = res["error"]
             print(f"FEL ({res['error']}), {s['fails']} i rad")
+            if s["fails"] >= FAIL_WARN_AFTER:
+                s["retry_after"] = int(time.time() + RETRY_HOURS * 3600)
             if s["fails"] == FAIL_WARN_AFTER and not first_run:
                 notifier(
                     f"⚠️ Kan inte läsa {name}",
-                    f"Sidan har inte gått att läsa på ~{FAIL_WARN_AFTER * 10} min ({res['error']}). "
-                    "Butiken blockerar troligen automatiska kontroller – använd butikens "
-                    "'Meddela mig'-knapp eller Prisjakt för just den.",
+                    f"Sidan går inte att läsa automatiskt ({res['error']}). Jag provar bara igen "
+                    f"var {RETRY_HOURS}:e timme. Bevaka den här butiken själv: tryck 'Meddela mig' "
+                    "på produktsidan eller lägg en lagerbevakning i Prisjakt-appen.",
                     url,
                     priority=2,
                     tags=["warning"],
@@ -529,6 +605,9 @@ def run(items: list[dict], state: dict | None, checker=check, notifier=notify, p
 
         new_st, detail, key = res["status"], res["detail"], res.get("key", "")
         print(f"{LABEL[new_st]} {('– ' + detail) if detail else ''}")
+        if prev and prev.get("fails", 0) >= FAIL_WARN_AFTER and not first_run:
+            notifier(f"✅ {name} går att läsa igen", "Bevakningen fungerar för butiken igen.", url,
+                     priority=2, tags=["white_check_mark"])
         old_st = prev.get("status", OUT) if prev else OUT
         old_key = prev.get("key", "") if prev else ""
 

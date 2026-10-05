@@ -4,7 +4,13 @@
 #
 # "Slut-text" = en bit text som bara står på sidan när varan är slut,
 # t.ex. "Meddela mig när". När den texten försvinner får du en notis.
+# Står slut-texten kvar på sidan räknas varan som slut, oavsett vad butikens
+# data eller andra produkter på sidan (varianter, tillbehör) säger.
 # Rader som börjar med # hoppas över. Lägg gärna till fler butiker!
+#
+# Butiker som blockerar automatiska kontroller (Inet och Elgiganten gör det
+# från GitHubs servrar) provas bara var 6:e timme. Bevaka dem själv med
+# "Meddela mig" på produktsidan eller en lagerbevakning i Prisjakt-appen.
 
 # --- PS5 Pro 2TB (2025, CFI-7121) ---
 Webhallen | https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025

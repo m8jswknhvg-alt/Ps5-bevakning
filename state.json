@@ -56,12 +56,12 @@
     "status": 2
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/": {
-    "detail": "butiken anger: går att beställa (restorder)",
+    "detail": "datan säger \"går att beställa (restorder)\" men sidan visar \"Ej i lager\" – räknas som slut",
     "fails": 0,
     "key": "",
     "name": "NetOnNet",
-    "since": "2026-10-02 09:48",
-    "status": 3
+    "since": "2026-10-05 11:13",
+    "status": 0
   },
   "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/": {
     "detail": "butiken anger: slut",
@@ -90,7 +90,7 @@
     "status": 0
   },
   "https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025": {
-    "detail": "2 st inkommande (ej bekräftat) · 12 990 kr",
+    "detail": "1 st inkommande (ej bekräftat) · 12 990 kr",
     "fails": 0,
     "key": "",
     "name": "Webhallen",

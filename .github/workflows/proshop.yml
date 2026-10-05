@@ -1,0 +1,40 @@
+name: Proshop-kontroll
+
+on:
+  schedule:
+    - cron: "17 * * * *" # en gång i timmen
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: proshop
+  cancel-in-progress: false
+
+jobs:
+  kolla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Kolla Proshop
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python proshop_koll.py
+      - name: Spara logg
+        run: |
+          git config user.name "ps5-bevakning"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add proshop_state.json proshop_logg.csv
+          if git diff --cached --quiet; then
+            echo "Ingen ändring"
+          else
+            git commit -m "Proshop-logg"
+            git pull --rebase --quiet && git push
+          fi

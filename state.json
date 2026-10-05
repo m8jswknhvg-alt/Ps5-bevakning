@@ -55,22 +55,6 @@
     "since": "2026-10-02 09:48",
     "status": 2
   },
-  "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/": {
-    "detail": "butiken anger: går att beställa (restorder)",
-    "fails": 0,
-    "key": "",
-    "name": "NetOnNet",
-    "since": "2026-10-05 13:53",
-    "status": 3
-  },
-  "https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/": {
-    "detail": "butiken anger: slut",
-    "fails": 0,
-    "key": "",
-    "name": "NetOnNet (2024-modell)",
-    "since": "2026-10-02 09:48",
-    "status": 0
-  },
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
     "detail": "Förväntas i eget lager 2026-10-06",
     "error": "HTTP 403",

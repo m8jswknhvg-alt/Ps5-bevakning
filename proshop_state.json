@@ -2,7 +2,8 @@
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
     "detail": "",
     "error": "HTTP 403",
-    "fails": 5,
+    "fails": 6,
+    "retry_after": 1791246959,
     "since": "2026-10-05 15:36",
     "status": 0
   }

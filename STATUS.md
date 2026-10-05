@@ -7,7 +7,7 @@ Uppdateras automatiskt när något ändras.
 | ⚪ | [Webhallen](https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025) | SLUT | 1 st inkommande (ej bekräftat) · 12 990 kr | 2026-10-02 09:48 |
 | ⚪ | [Inet](https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025) | SLUT ⚠️ kan inte läsas (HTTP 403), nytt försök var 6:e timme – bevaka själv |  | 2026-10-02 09:48 |
 | ⚪ | [Elgiganten](https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805) | SLUT ⚠️ kan inte läsas (HTTP 429), nytt försök var 6:e timme – bevaka själv |  | 2026-10-02 09:48 |
-| ⚪ | [NetOnNet](https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/) | SLUT | datan säger "går att beställa (restorder)" men sidan visar "Ej i lager" – räknas som slut | 2026-10-05 11:13 |
+| 🟡 | [NetOnNet](https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/) | FÖRBOKA | butiken anger: går att beställa (restorder) | 2026-10-05 11:18 |
 | 🚚 | [Proshop](https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363) | LEVERANS ⚠️ kan inte läsas (HTTP 403), nytt försök var 6:e timme – bevaka själv | Förväntas i eget lager 2026-10-06 | 2026-10-03 20:36 |
 | ⚪ | [Komplett](https://www.komplett.se/product/1330018/gaming/konsoler/playstation/playstation-5-pro-2tb) | SLUT | slut-texten finns kvar på sidan | 2026-10-02 09:48 |
 | ⚪ | [Clas Ohlson](https://www.clasohlson.com/se/Sony-PlayStation-5-Pro---PS5-spelkonsol,-2-TB/p/39-4731) | SLUT | butiken anger: slut · 10 979 kr | 2026-10-02 09:48 |

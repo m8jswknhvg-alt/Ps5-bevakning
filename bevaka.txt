@@ -16,7 +16,7 @@
 Webhallen | https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025
 Inet | https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025 | Nästa leveransdatum är för närvarande oklart
 Elgiganten | https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805
-NetOnNet | https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/
+# NetOnNet | https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro-2025/1060020.14413/
 Proshop | https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363 | inte emot beställningar
 Komplett | https://www.komplett.se/product/1330018/gaming/konsoler/playstation/playstation-5-pro-2tb | så snart produkten finns tillgänglig
 Clas Ohlson | https://www.clasohlson.com/se/Sony-PlayStation-5-Pro---PS5-spelkonsol,-2-TB/p/39-4731
@@ -26,4 +26,4 @@ Spel & Sånt | https://www.spelochsant.se/produkt/playstation5/konsol/playstatio
 # --- Äldre modell (2024) och paket – också PS5 Pro ---
 Elgiganten (2024-modell) | https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990
 Elgiganten (EA FC 26-paket) | https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181
-NetOnNet (2024-modell) | https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/
+# NetOnNet (2024-modell) | https://www.netonnet.se/art/gaming/spel-och-konsol/playstation/playstation-5/sony-playstation-5-pro/1035751.0/

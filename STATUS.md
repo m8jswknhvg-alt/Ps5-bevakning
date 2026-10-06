@@ -11,6 +11,6 @@ Uppdateras automatiskt när något ändras.
 | ⚪ | [Komplett](https://www.komplett.se/product/1330018/gaming/konsoler/playstation/playstation-5-pro-2tb) | SLUT | slut-texten finns kvar på sidan | 2026-10-02 09:48 |
 | ⚪ | [Clas Ohlson](https://www.clasohlson.com/se/Sony-PlayStation-5-Pro---PS5-spelkonsol,-2-TB/p/39-4731) | SLUT | butiken anger: slut · 10 979 kr | 2026-10-02 09:48 |
 | 🚚 | [MaxGaming](https://www.maxgaming.se/sv/playstation-5/playstation-5-pro-2tb-ps5-pro) | LEVERANS | butiken anger: slut · Preliminärt datum: 2026-10-30 · 11 990 kr | 2026-10-02 09:48 |
-| ⚪ | [Spel & Sånt](https://www.spelochsant.se/produkt/playstation5/konsol/playstation5prodigitaledition2tb) | SLUT | hittade ingen lagerinfo – lägg till en slut-text i bevaka.txt | 2026-10-05 11:04 |
+| ⚪ | [Spel & Sånt](https://www.spelochsant.se/produkt/playstation5/konsol/playstation5prodigitaledition2tb) | SLUT | datan säger "i lager" men sidan visar "ej i lager" – räknas som slut · 13 999 kr | 2026-10-05 11:04 |
 | ⚪ | [Elgiganten (2024-modell)](https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990) | SLUT ⚠️ kan inte läsas (HTTP 429), nytt försök var 6:e timme – bevaka själv |  | 2026-10-02 09:48 |
 | ⚪ | [Elgiganten (EA FC 26-paket)](https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181) | SLUT ⚠️ kan inte läsas (HTTP 429), nytt försök var 6:e timme – bevaka själv |  | 2026-10-02 09:48 |

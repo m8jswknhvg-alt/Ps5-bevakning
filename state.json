@@ -10,32 +10,32 @@
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 255,
-    "retry_after": 1791302077,
+    "fails": 256,
+    "retry_after": 1791323747,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 255,
-    "retry_after": 1791302063,
+    "fails": 256,
+    "retry_after": 1791323733,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 255,
-    "retry_after": 1791302075,
+    "fails": 256,
+    "retry_after": 1791323745,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025": {
     "detail": "",
     "error": "HTTP 403",
-    "fails": 255,
-    "retry_after": 1791302061,
+    "fails": 256,
+    "retry_after": 1791323732,
     "since": "2026-10-02 09:48",
     "status": 0
   },
@@ -58,10 +58,10 @@
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
     "detail": "Förväntas i eget lager 2026-10-06",
     "error": "HTTP 403",
-    "fails": 14,
+    "fails": 15,
     "key": "2026-10-06",
     "name": "Proshop",
-    "retry_after": 1791302065,
+    "retry_after": 1791323735,
     "since": "2026-10-03 20:36",
     "status": 2
   },

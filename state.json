@@ -10,32 +10,32 @@
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 266,
-    "retry_after": 1791544548,
+    "fails": 267,
+    "retry_after": 1791567326,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 266,
-    "retry_after": 1791544533,
+    "fails": 267,
+    "retry_after": 1791567311,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 266,
-    "retry_after": 1791544546,
+    "fails": 267,
+    "retry_after": 1791567324,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025": {
     "detail": "",
     "error": "HTTP 403",
-    "fails": 266,
-    "retry_after": 1791544532,
+    "fails": 267,
+    "retry_after": 1791567310,
     "since": "2026-10-02 09:48",
     "status": 0
   },
@@ -56,14 +56,12 @@
     "status": 2
   },
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
-    "detail": "Förväntas i eget lager 2026-10-06",
-    "error": "HTTP 403",
-    "fails": 25,
-    "key": "2026-10-06",
+    "detail": "",
+    "fails": 0,
+    "key": "",
     "name": "Proshop",
-    "retry_after": 1791544535,
-    "since": "2026-10-03 20:36",
-    "status": 2
+    "since": "2026-10-09 13:35",
+    "status": 0
   },
   "https://www.spelochsant.se/produkt/playstation5/konsol/playstation5prodigitaledition2tb": {
     "detail": "datan säger \"i lager\" men sidan visar \"ej i lager\" – räknas som slut · 13 999 kr",

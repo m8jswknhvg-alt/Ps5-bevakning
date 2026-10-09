@@ -10,32 +10,32 @@
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 265,
-    "retry_after": 1791522899,
+    "fails": 266,
+    "retry_after": 1791544548,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 265,
-    "retry_after": 1791522884,
+    "fails": 266,
+    "retry_after": 1791544533,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 265,
-    "retry_after": 1791522897,
+    "fails": 266,
+    "retry_after": 1791544546,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025": {
     "detail": "",
     "error": "HTTP 403",
-    "fails": 265,
-    "retry_after": 1791522881,
+    "fails": 266,
+    "retry_after": 1791544532,
     "since": "2026-10-02 09:48",
     "status": 0
   },
@@ -58,10 +58,10 @@
   "https://www.proshop.se/Spelkonsol/Sony-PlayStation-5-Pro/3417363": {
     "detail": "Förväntas i eget lager 2026-10-06",
     "error": "HTTP 403",
-    "fails": 24,
+    "fails": 25,
     "key": "2026-10-06",
     "name": "Proshop",
-    "retry_after": 1791522886,
+    "retry_after": 1791544535,
     "since": "2026-10-03 20:36",
     "status": 2
   },
@@ -74,11 +74,11 @@
     "status": 0
   },
   "https://www.webhallen.com/se/product/390835-PlayStation-5-Pro-2025": {
-    "detail": "1 st i webblager · 13 990 kr",
+    "detail": "9 st inkommande (ej bekräftat) · 13 990 kr",
     "fails": 0,
     "key": "",
     "name": "Webhallen",
-    "since": "2026-10-09 06:55",
-    "status": 4
+    "since": "2026-10-09 07:15",
+    "status": 0
   }
 }

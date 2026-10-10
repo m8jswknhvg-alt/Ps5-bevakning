@@ -10,16 +10,16 @@
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol-ea-fc-26-paket/992181": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 271,
-    "retry_after": 1791654802,
+    "fails": 272,
+    "retry_after": 1791676741,
     "since": "2026-10-02 09:48",
     "status": 0
   },
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb-spelkonsol/994805": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 271,
-    "retry_after": 1791654789,
+    "fails": 272,
+    "retry_after": 1791676727,
     "since": "2026-10-02 09:48",
     "status": 0
   },
@@ -34,8 +34,8 @@
   "https://www.inet.se/produkt/6612681/sony-playstation-5-pro-2tb-2025": {
     "detail": "",
     "error": "HTTP 403",
-    "fails": 271,
-    "retry_after": 1791654788,
+    "fails": 272,
+    "retry_after": 1791676725,
     "since": "2026-10-02 09:48",
     "status": 0
   },

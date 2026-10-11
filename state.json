@@ -26,8 +26,8 @@
   "https://www.elgiganten.se/product/gaming/spelkonsoler-tillbehor/playstation/ps5-playstation-5-konsol/playstation-5-pro-2tb/830990": {
     "detail": "",
     "error": "HTTP 429",
-    "fails": 272,
-    "retry_after": 1791677786,
+    "fails": 273,
+    "retry_after": 1791699825,
     "since": "2026-10-02 09:48",
     "status": 0
   },

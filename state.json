@@ -2,9 +2,10 @@
   "https://www.clasohlson.com/se/Sony-PlayStation-5-Pro---PS5-spelkonsol,-2-TB/p/39-4731": {
     "detail": "butiken anger: slut · 10 979 kr",
     "error": "HTTP 503",
-    "fails": 5,
+    "fails": 6,
     "key": "",
     "name": "Clas Ohlson",
+    "retry_after": 1791776168,
     "since": "2026-10-02 09:48",
     "status": 0
   },
